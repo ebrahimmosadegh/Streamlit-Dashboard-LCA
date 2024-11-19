@@ -24,3 +24,14 @@ def load_data():
     return df
 
 df = load_data()
+
+# Sidebar filters
+st.sidebar.header("Filters")
+selected_products = st.sidebar.multiselect(
+    "Select Products",
+    options=df['Product'].unique(),
+    default=df['Product'].unique()
+)
+
+# Filter dataframe based on selection
+filtered_df = df[df['Product'].isin(selected_products)]
