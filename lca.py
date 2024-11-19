@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
+import numpy as np
 
 # Set page config
 st.set_page_config(page_title="LCA Europa Dashboard", layout="wide")
@@ -41,25 +42,17 @@ col1, col2 = st.columns(2)
 
 with col1:
     # Carbon Footprint Chart
-    fig_carbon = px.bar(
-        filtered_df,
-        x='Product',
-        y='Carbon_Footprint',
-        title='Carbon Footprint by Product'
-    )
-    st.plotly_chart(fig_carbon, use_container_width=True)
+    st.html("<p style='font-weight:bold;margin-top:15px'>Carbon Footprint by Product</p>")
+    st.bar_chart(filtered_df, x="Product", y="Carbon_Footprint")
     
     # Energy Consumption Chart
-    fig_energy = px.line(
-        filtered_df,
-        x='Product',
-        y='Energy_Consumption',
-        title='Energy Consumption by Product'
-    )
-    st.plotly_chart(fig_energy, use_container_width=True)
+    st.html("<p style='font-weight:bold;margin-top:15px'>Energy Consumption by Product</p>")
+    st.line_chart(filtered_df, x="Product", y="Energy_Consumption")
 
 with col2:
     # Water Usage Chart
+    st.html("<p style='font-weight:bold;margin-top:15px'>Water Usage Distribution</p>")
+    st.scatter_chart(filtered_df, x="Water_Usage", y="Product")
     fig_water = px.pie(
         filtered_df,
         values='Water_Usage',
