@@ -35,3 +35,25 @@ selected_products = st.sidebar.multiselect(
 
 # Filter dataframe based on selection
 filtered_df = df[df['Product'].isin(selected_products)]
+
+# Create layout with columns
+col1, col2 = st.columns(2)
+
+with col1:
+    # Carbon Footprint Chart
+    fig_carbon = px.bar(
+        filtered_df,
+        x='Product',
+        y='Carbon_Footprint',
+        title='Carbon Footprint by Product'
+    )
+    st.plotly_chart(fig_carbon, use_container_width=True)
+    
+    # Energy Consumption Chart
+    fig_energy = px.line(
+        filtered_df,
+        x='Product',
+        y='Energy_Consumption',
+        title='Energy Consumption by Product'
+    )
+    st.plotly_chart(fig_energy, use_container_width=True)
