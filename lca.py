@@ -57,3 +57,17 @@ with col1:
         title='Energy Consumption by Product'
     )
     st.plotly_chart(fig_energy, use_container_width=True)
+
+with col2:
+    # Water Usage Chart
+    fig_water = px.pie(
+        filtered_df,
+        values='Water_Usage',
+        names='Product',
+        title='Water Usage Distribution'
+    )
+    st.plotly_chart(fig_water, use_container_width=True)
+    
+    # Summary Statistics
+    st.subheader("Summary Statistics")
+    st.dataframe(filtered_df.describe())
