@@ -71,3 +71,7 @@ with col2:
     # Summary Statistics
     st.subheader("Summary Statistics")
     st.dataframe(filtered_df.describe())
+
+    # Footer
+st.markdown("---")
+st.markdown("Data source: LCA Europa Database")
