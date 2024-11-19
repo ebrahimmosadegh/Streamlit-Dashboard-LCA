@@ -46,13 +46,16 @@ with col1:
     st.bar_chart(filtered_df, x="Product", y="Carbon_Footprint")
     
     # Energy Consumption Chart
-    st.html("<p style='font-weight:bold;margin-top:15px'>Energy Consumption by Product</p>")
-    st.line_chart(filtered_df, x="Product", y="Energy_Consumption")
+    fig_energy = px.line(
+        filtered_df,
+        x='Product',
+        y='Energy_Consumption',
+        title='Energy Consumption by Product'
+    )
+    st.plotly_chart(fig_energy, use_container_width=True)
 
 with col2:
     # Water Usage Chart
-    st.html("<p style='font-weight:bold;margin-top:15px'>Water Usage Distribution</p>")
-    st.scatter_chart(filtered_df, x="Water_Usage", y="Product")
     fig_water = px.pie(
         filtered_df,
         values='Water_Usage',
