@@ -1,20 +1,18 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-import plotly.graph_objects as go
-import numpy as np
 
 # Set page config
-st.set_page_config(page_title="LCA Europa Dashboard", layout="wide")
+st.set_page_config(page_title="LCA Europe Dashboard", layout="wide")
 
 # Add title and description
-st.title("LCA Europa Dashboard")
-st.markdown("This dashboard visualizes Life Cycle Assessment (LCA) data from Europa.")
+st.title("LCA Europe Dashboard")
+st.markdown("This dashboard visualizes Life Cycle Assessment (LCA) data from Europe.")
 
 # Load and preprocess data
 @st.cache_data
 def load_data():
-    # Replace with actual data loading from LCA Europa
+    # Replace with actual data loading from LCA Europe
     # This is just an example structure
     df = pd.DataFrame({
         'Product': ['Product A', 'Product B', 'Product C'],
@@ -69,5 +67,5 @@ with col2:
     st.dataframe(filtered_df.describe())
 
     # Footer
-st.markdown("---")
-st.markdown("Data source: LCA Europa Database")
+st.divider()
+st.markdown("Data source: LCA Europe Database")
